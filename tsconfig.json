@@ -17,7 +17,15 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ngx-countries-input": [
+        "dist/ngx-countries-input"
+      ],
+      "ngx-countries-input/*": [
+        "dist/ngx-countries-input/*"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
