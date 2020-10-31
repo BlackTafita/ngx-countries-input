@@ -1746,7 +1746,6 @@ export class NgxCountriesInputService {
   ];
 
   getCountries(search?: string): Observable<NgxCountry[]> {
-    console.log('in', search);
     return of(this.countries.filter((country) => country.name.toLowerCase().match(`^${search ? search.toLowerCase() : '.*'}`)));
   }
 
