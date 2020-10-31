@@ -44,7 +44,6 @@ export class NgxCountriesInputComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.countries$ = this.countriesControl.valueChanges
       .pipe(
-        tap(() => console.log('in')),
         switchMap((input) => this.countriesService.getCountries(input)),
         shareReplay(),
       );
