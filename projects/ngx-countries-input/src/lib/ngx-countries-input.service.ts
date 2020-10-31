@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { NgxCountry } from './country.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +10,7 @@ export class NgxCountriesInputService {
   constructor() {
   }
 
-  countries = [
+  countries: NgxCountry[] = [
     {
       shortName: 'AF',
       currency: 'AFN',
@@ -60,6 +62,8 @@ export class NgxCountriesInputService {
     },
     {
       shortName: 'AQ',
+      currency: null,
+      code: null,
       flag: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAeCAMAAABpA6zvAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAVBQTFRFOn3OPH7OO37OO33ONHnMM3nMN3vNPH7POXzOM3jMXJPWWZHWRYTRMHfMNnrNOX3OOHzOutHu+fv9+/z+8/f8z9/zTorTPH/PMnjMs83s/////P3++vz++vv+hq/hUo3UMXfMP4DPNXrNR4bR7PP6/f7//v7//f7+/f3+xNjwX5XXNHnNMHbLap3aj7XjKHHKP4HPQIHPZprZ+/3+mr3mK3PKPX/POHvNQoLQ6/L6xdnxUIvTJ3HJrMjqwtfwW5PW9/r9krfkirLiytzy6fH6RIPQy93y/v//3Oj2L3bLydzy+Pr9p8XpSYfSPoDP1uT1gKvfLXXLYpjYcqLceqfe9Pf8ocHoLXTLL3XLa57afqrfLnXL0eH07/X7nb7njrTjtM3skLbjt9Dt4+z44uz4LHTL9fj8bp/bPn/PMnfMr8rrpMPoKnLK1eP1e6jeMHbMsWd+rAAAAAFiS0dEGnVn5DIAAAAJcEhZcwAAAEgAAABIAEbJaz4AAAFxSURBVDjLzZPZW4JAFMUZUBwsREuDLlqkgZq2mEll+2JppVmWtu/7+v+/BVp9Kig+9XWef3POuXdmCOI/CSGyE4wibXaacFiyJGacXd2YdSHU3o9ze3p6vT5nH8Pw5iiuhiGhH0QA8AcGBiXGLB8PBSnEUXRoGGRQwgpExOhIzEii+OjYeGwiIU2CAroUJQlTKdXYbXpmNj2nsvML1WRdIixKJi2RsLQMK6trAfiRAusZbLIWOrQBm/AdrEuGbM5lMg6Jg1vgF3857dT2Tp42khRX2NVc6iVCcU81KbkPTQpDKc4bQJ49ONRLNjiWK7oj5hpIx9FxWGlyPDnVQFxQG0kknWnTaJJrfATStUU2XzqyFc/r1qMlX+Sqs3DNNUk2c3lVvr65vdP5CPiEVq/SQVfuKymBLUFSTsLDo73lmyRVVX0qPL9odjK8vqlEO1E44cl636MfQcvv4P6k80QuTllx2vyEi+B5a04v2xH1R/oCqT03XvcrJGcAAAAldEVYdGRhdGU6Y3JlYXRlADIwMTMtMTAtMDdUMTM6MTQ6NDMrMDI6MDAslB9SAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDEzLTEwLTA3VDEzOjE0OjQzKzAyOjAwXcmn7gAAAABJRU5ErkJggg==',
       name: 'Antarctica'
     },
@@ -1740,5 +1744,10 @@ export class NgxCountriesInputService {
       name: 'Åland Islands'
     }
   ];
+
+  getCountries(search?: string): Observable<NgxCountry[]> {
+    console.log('in', search);
+    return of(this.countries.filter((country) => country.name.toLowerCase().match(`^${search ? search.toLowerCase() : '.*'}`)));
+  }
 
 }

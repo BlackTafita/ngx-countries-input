@@ -1,7 +1,7 @@
 export interface NgxCountry {
-  name: string;
-  currency: string;
-  code: string;
-  flag: string;
   shortName: string;
+  currency?: string;
+  code?: string;
+  flag: string;
+  name: string;
 }
