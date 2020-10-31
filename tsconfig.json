@@ -7,7 +7,7 @@
     "declaration": false,
     "downlevelIteration": true,
     "experimentalDecorators": true,
-    "module": "esnext",
+    "module": "es2020",
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "es2015",
@@ -24,6 +24,9 @@
       ],
       "ngx-countries-input/*": [
         "dist/ngx-countries-input/*"
+      ],
+      "@angular/*": [
+        "../node_modules/@angular/*"
       ]
     }
   },
