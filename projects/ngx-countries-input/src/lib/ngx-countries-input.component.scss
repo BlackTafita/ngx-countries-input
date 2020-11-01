@@ -1,0 +1,43 @@
+.ngx-countries-input {
+  position: relative;
+  .ngx-countries-input__input-block {
+
+  }
+
+  .ngx-countries-input__result-block {
+    position: absolute;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 10px 0;
+    max-height: 15em;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background-color: white;
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+
+      .country-list-element {
+        padding: 0.5em;
+        display: flex;
+        cursor: pointer;
+
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.2);
+        }
+
+        &__flag {
+          margin-right: 1em;
+          height: 1em;
+        }
+
+        &__phone {
+          color: rgba(0, 0, 0, 0.36);
+          display: block;
+          margin-right: 1em;
+        }
+      }
+    }
+  }
+}

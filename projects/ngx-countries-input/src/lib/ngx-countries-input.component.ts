@@ -3,32 +3,23 @@ import { FormControl } from '@angular/forms';
 import { NgxCountriesInputService } from './ngx-countries-input.service';
 import { Observable, Subscription } from 'rxjs';
 import { NgxCountry } from './country.interface';
-import { shareReplay, switchMap, tap } from 'rxjs/operators';
+import { shareReplay, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'ngx-countries-input',
-  template: `
-    <p>NGX-COUNTRIES-INPUT</p>
-    <div class="ngx-countries-input">
-      <div class="ngx-countries-input__input-block">
-        <input
-          class="ngx-countries-input__input-block__input"
-          [formControl]="countriesControl"
-          (focus)="onFocus()"
-        />
-      </div>
-      <div class="ngx-countries-input__result-block" *ngIf="isFocused">
-        <ul>
-          <li *ngFor="let country of (countries$ | async)" (click)="selectOption(country)">{{country.name}}</li>
-        </ul>
-      </div>
-    </div>
-  `,
-  styles: []
+  styles: [],
+  templateUrl: './ngx-countries-input.component.html',
+  styleUrls: ['./ngx-countries-input.component.scss'],
 })
 export class NgxCountriesInputComponent implements OnInit, OnDestroy {
 
-  @Input() control: FormControl;
+  @Input() control: FormControl = new FormControl();
+
+  // TODO: ADD functionality for this inputs
+  @Input() inputClass: string;
+  @Input() material = false;
+  @Input() showFlag = true;
+  @Input() showPhoneCode = false;
 
   countriesControl: FormControl = new FormControl(null);
 
@@ -69,8 +60,8 @@ export class NgxCountriesInputComponent implements OnInit, OnDestroy {
   @HostListener('document:click', ['$event'])
   clickOut(event) {
     if (!this.eRef.nativeElement.contains(event.target)) {
-    this.isFocused = false;
-    this.control.patchValue(null);
+      this.isFocused = false;
+      this.control.patchValue(null);
     }
   }
 

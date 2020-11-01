@@ -1,0 +1,28 @@
+<p>NGX-COUNTRIES-INPUT</p>
+<div class="ngx-countries-input">
+  <div class="ngx-countries-input__input-block">
+    <input
+      class="ngx-countries-input__input-block__input"
+      [formControl]="countriesControl"
+      (focus)="onFocus()"
+    />
+  </div>
+  <div class="ngx-countries-input__result-block" *ngIf="isFocused">
+    <ul>
+      <li class="country-list-element" *ngFor="let country of (countries$ | async)" (click)="selectOption(country)">
+        <img
+          *ngIf="showFlag"
+          [src]="country.flag"
+          class="country-list-element__flag"
+        />
+        <span
+          *ngIf="showPhoneCode"
+          class="country-list-element__phone"
+        >
+          {{country.code}}
+        </span>
+        <span class="country-list-element__name">{{country.name}}</span>
+      </li>
+    </ul>
+  </div>
+</div>
