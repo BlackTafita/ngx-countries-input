@@ -14,12 +14,12 @@ import { shareReplay, switchMap } from 'rxjs/operators';
 export class NgxCountriesInputComponent implements OnInit, OnDestroy {
 
   @Input() control: FormControl = new FormControl();
+  @Input() showFlag = true;
+  @Input() showPhoneCode = false;
 
   // TODO: ADD functionality for this inputs
   @Input() inputClass: string;
   @Input() material = false;
-  @Input() showFlag = true;
-  @Input() showPhoneCode = false;
 
   countriesControl: FormControl = new FormControl(null);
 
