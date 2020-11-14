@@ -5,3 +5,4 @@
 export * from './lib/ngx-countries-input.service';
 export * from './lib/ngx-countries-input.component';
 export * from './lib/ngx-countries-input.module';
+export * from './lib/country.interface';

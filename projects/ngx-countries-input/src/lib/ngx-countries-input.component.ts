@@ -1,9 +1,9 @@
-import { Component, ElementRef, HostListener, Input, OnDestroy, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { NgxCountriesInputService } from './ngx-countries-input.service';
-import { Observable, Subscription } from 'rxjs';
-import { NgxCountry } from './country.interface';
-import { shareReplay, switchMap } from 'rxjs/operators';
+import {Component, ElementRef, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output} from '@angular/core';
+import {FormControl} from '@angular/forms';
+import {NgxCountriesInputService} from './ngx-countries-input.service';
+import {Observable, Subscription} from 'rxjs';
+import {NgxCountry} from './country.interface';
+import {shareReplay, switchMap} from 'rxjs/operators';
 
 @Component({
   selector: 'ngx-countries-input',
@@ -16,10 +16,11 @@ export class NgxCountriesInputComponent implements OnInit, OnDestroy {
   @Input() control: FormControl = new FormControl();
   @Input() showFlag = true;
   @Input() showPhoneCode = false;
-
   // TODO: ADD functionality for this inputs
   @Input() inputClass: string;
   @Input() material = false;
+
+  @Output() countryChanged: EventEmitter<NgxCountry> = new EventEmitter<NgxCountry>();
 
   countriesControl: FormControl = new FormControl(null);
 
@@ -54,6 +55,7 @@ export class NgxCountriesInputComponent implements OnInit, OnDestroy {
   selectOption(country: NgxCountry) {
     this.control.patchValue(country.name);
     this.countriesControl.patchValue(country.name);
+    this.countryChanged.emit(country);
     this.isFocused = false;
   }
 
