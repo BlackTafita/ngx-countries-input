@@ -63,7 +63,9 @@ export class NgxCountriesInputComponent implements OnInit, OnDestroy {
   clickOut(event) {
     if (!this.eRef.nativeElement.contains(event.target)) {
       this.isFocused = false;
-      this.control.patchValue(null);
+      if (this.control.value && !this.control.value.length) {
+        this.control.patchValue(null);
+      }
     }
   }
 
