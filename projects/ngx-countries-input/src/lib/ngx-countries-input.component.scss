@@ -6,6 +6,7 @@
   }
 
   .ngx-countries-input__result-block {
+    line-break: unset;
     position: absolute;
     border: 1px solid rgba(0, 0, 0, 0.2);
     border-radius: 10px 0;
