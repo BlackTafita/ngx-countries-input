@@ -1,13 +1,19 @@
 .ngx-countries-input {
   position: relative;
   min-width: fit-content;
-  .ngx-countries-input__input-block {
+  &__input-block {
     min-width: fit-content;
+
+    input {
+      display: block;
+      width: 100%;
+    }
   }
 
   .ngx-countries-input__result-block {
     line-break: unset;
     position: absolute;
+    min-width: 100%;
     border: 1px solid rgba(0, 0, 0, 0.2);
     border-radius: 10px 0;
     max-height: 15em;
