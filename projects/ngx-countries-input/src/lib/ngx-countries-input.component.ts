@@ -18,7 +18,6 @@ export class NgxCountriesInputComponent implements OnInit, OnDestroy {
   @Input() showPhoneCode = false;
   // TODO: ADD functionality for this inputs
   @Input() inputClass: string;
-  @Input() material = false;
 
   @Output() countryChanged: EventEmitter<NgxCountry> = new EventEmitter<NgxCountry>();
 

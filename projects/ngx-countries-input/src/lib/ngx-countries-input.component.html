@@ -2,6 +2,7 @@
   <div class="ngx-countries-input__input-block">
     <input
       class="ngx-countries-input__input-block__input"
+      [ngClass]="inputClass"
       [formControl]="countriesControl"
       (focus)="onFocus()"
     />
